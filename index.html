@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - ADS</title>
+    <link rel="stylesheet"
+          href="static/assets/bootstrap/css/bootstrap.min.css?h=1270ee4cab9dfea547cc543907ea0f46">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+
+    <script type="text/javascript">
+        function alertvalue() {
+            var input_ads = document.getElementById("adsinput")
+
+            var input_fov = document.getElementById("fovinput")
+            var aspectRatio_dom = document.getElementById("aspectratio")
+
+            var aspectRatio = aspectRatio_dom.value
+
+            var PI = 3.1415926
+
+
+            var x1 = document.getElementById("x1")
+            var x15 = document.getElementById("x15")
+            var x2 = document.getElementById("x2")
+            var x25 = document.getElementById("x25")
+            var x3 = document.getElementById("x3")
+            var x4 = document.getElementById("x4")
+            var x5 = document.getElementById("x5")
+            var x12 = document.getElementById("x12")
+
+            var value = input_ads.value
+            //alert(x1.innerText)
+            if (input_ads.value > 100) {
+                input_ads.value = 100
+                value = 100
+            } else if (input_ads.value < 0) {
+                input_ads.value = 0
+                value = 0
+            }
+
+            if (input_fov.value > 90) {
+                input_fov.value = 90
+
+            } else if (input_fov.value < 0) {
+                input_fov.value = 0
+
+            }
+
+            var VerticalFOV_rad = input_fov.value * PI / 180
+            var HorizontalFOV = 2 * Math.atan(Math.tan(VerticalFOV_rad / 2) * aspectRatio)
+            var VerticalFOV_updtd = 0
+            if (HorizontalFOV > 2.61798) {
+                VerticalFOV_updtd = 2 * Math.atan(Math.tan(1.309) / aspectRatio)
+            } else {
+                VerticalFOV_updtd = HorizontalFOV
+            }
+
+            var adsmul1=0.6
+            var adsmul15=0.59
+            var adsmul2=0.49
+            var adsmul25=0.42
+            var adsmul3=0.35
+            var adsmul4=0.3
+            var adsmul5=0.22
+            var adsmul12=0.14
+
+            var fovmul1=0.9
+            var fovmul15=0.59
+            var fovmul2=0.49
+            var fovmul25=0.42
+            var fovmul3=0.35
+            var fovmul4=0.3
+            var fovmul5=0.22
+            var fovmul12=0.092
+
+
+
+
+            var fovadj1=Math.tan(fovmul1*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj15=Math.tan(fovmul15*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj2=Math.tan(fovmul2*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj25=Math.tan(fovmul25*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj3=Math.tan(fovmul3*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj4=Math.tan(fovmul4*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj5=Math.tan(fovmul5*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+            var fovadj12=Math.tan(fovmul12*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+
+
+
+
+            var vx1 = parseInt(value * (adsmul1/fovadj1))
+            var vx15 = parseInt(value * (adsmul15/fovadj15))
+            var vx2 = parseInt(value * (adsmul2/fovadj2))
+            var vx25 = parseInt(value * (adsmul25/fovadj25))
+            var vx3 = parseInt(value * (adsmul3/fovadj3))
+            var vx4 = parseInt(value * (adsmul4/fovadj4))
+            var vx5 = parseInt(value * (adsmul5/fovadj5))
+            var vx12 = parseInt(value * (adsmul12/fovadj12))
+
+            if (vx15 > 100) {
+                vx15 += "(100)"
+            }
+            if (vx2 > 100) {
+                vx2 += "(100)"
+            }
+            if (vx25 > 100) {
+                vx25 += "(100)"
+            }
+            if (vx3 > 100) {
+                vx3 += "(100)"
+            }
+            if (vx4 > 100) {
+                vx4 += "(100)"
+            }
+            if (vx5 > 100) {
+                vx5 += "(100)"
+            }
+            if (vx12 > 100) {
+                vx12 += "(100)"
+            }
+
+            x1.innerText = vx1
+            x15.innerText = vx15
+            x2.innerText = vx2
+            x25.innerText = vx25
+            x3.innerText = vx3
+            x4.innerText = vx4
+            x5.innerText = vx5
+            x12.innerText = vx12
+
+        }
+
+    </script>
+</head>
+
+<body id="page-top" onload="alertvalue()">
+<header class="text-monospace border rounded d-flex masthead"
+        style="background-image: url(static/img/sam1.jpg);">
+    <div class="container my-auto text-center">
+        <h1 class="text-danger mb-1">开镜灵敏度转换工具</h1>
+        <h3 class="mb-5"><em class="text-secondary">ADS Convertor for Shadow Legacy</em></h3>
+        <div class="row">
+            <div class="col"><small class="form-text text-warning">《金属狂潮》的开镜灵敏度（如：83）</small>
+                <form><input type="number" id="adsinput" onchange="alertvalue()" value="83"></form>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col"><small class="form-text text-warning">长宽比</small>
+                <form><select name="aspect" id="aspectratio" onchange="alertvalue()">
+                    <option value="1.5">3:2</option>
+                    <option value="1.333333">4:3</option>
+                    <option value="1.25">5:4</option>
+                    <option value="1.6">16:10</option>
+                    <option value="1.77778" selected>16:9</option>
+                    <option value="2.33333">21:9</option>
+                </select></form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col"><small class="form-text text-warning">FOV视野（如：90）</small>
+                <form><input type="number" id="fovinput" onchange="alertvalue()" value="90"></form>
+            </div>
+
+        </div>
+
+
+        <div class="col"></div>
+
+        <div class="row">
+            <div class="col text-right"><strong class="text-monospace text-white">1.0X倍镜</strong></div>
+            <div class="col text-left"><a class="text-right text-white" id="x1">58</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-monospace text-right"><strong class="text-right text-white">1.5X倍镜<br><br></strong>
+            </div>
+            <div class="col text-left"><a class="text-white" id="x15">75</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-white">2.0X倍镜<br><br></strong></div>
+            <div class="col text-left"><a class="text-white" id="x2">83</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-monospace text-white">2.5X倍镜<br><br></strong></div>
+            <div class="col text-left"><a class="text-white" id="x25">87</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-white">3.0X倍镜</strong></div>
+            <div class="col text-left"><a class="text-white" id="x3">89</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-white">4.0X倍镜<br><br></strong></div>
+            <div class="col text-left"><a class="text-white" id="x4">91</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-white">5.0X倍镜<br><br></strong></div>
+            <div class="col text-left"><a class="text-white" id="x5">91</a></div>
+        </div>
+        <div class="row">
+            <div class="col text-right"><strong class="text-white">12.0X倍镜<br><br></strong></div>
+            <div class="col text-left"><a class="text-white" id="x12">91</a></div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+</header>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="static/assets/js/script.min.js?h=f785a2a98bb6835a523094575bc2ef57"></script>
+
+</body>
+
+</html>
