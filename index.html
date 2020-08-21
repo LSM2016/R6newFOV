@@ -13,14 +13,11 @@
     <script type="text/javascript">
         function alertvalue() {
             var input_ads = document.getElementById("adsinput")
-
             var input_fov = document.getElementById("fovinput")
             var aspectRatio_dom = document.getElementById("aspectratio")
-
             var aspectRatio = aspectRatio_dom.value
 
             var PI = 3.1415926
-
 
             var x1 = document.getElementById("x1")
             var x15 = document.getElementById("x15")
@@ -55,57 +52,47 @@
             if (HorizontalFOV > 2.61798) {
                 VerticalFOV_updtd = 2 * Math.atan(Math.tan(1.309) / aspectRatio)
             } else {
-                VerticalFOV_updtd = HorizontalFOV
+                VerticalFOV_updtd = VerticalFOV_rad
             }
+            console.log(VerticalFOV_updtd)
 
-            var adsmul1=0.6
-            var adsmul15=0.59
-            var adsmul2=0.49
-            var adsmul25=0.42
-            var adsmul3=0.35
-            var adsmul4=0.3
-            var adsmul5=0.22
-            var adsmul12=0.14
+            var adsmul1 = 0.6
+            var adsmul15 = 0.59
+            var adsmul2 = 0.49
+            var adsmul25 = 0.42
+            var adsmul3 = 0.35
+            var adsmul4 = 0.3
+            var adsmul5 = 0.22
+            var adsmul12 = 0.14
 
-            var fovmul1=0.9
-            var fovmul15=0.59
-            var fovmul2=0.49
-            var fovmul25=0.42
-            var fovmul3=0.35
-            var fovmul4=0.3
-            var fovmul5=0.22
-            var fovmul12=0.092
-
-
-
-
-            var fovadj1=Math.tan(fovmul1*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj15=Math.tan(fovmul15*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj2=Math.tan(fovmul2*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj25=Math.tan(fovmul25*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj3=Math.tan(fovmul3*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj4=Math.tan(fovmul4*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj5=Math.tan(fovmul5*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
-
-            var fovadj12=Math.tan(fovmul12*VerticalFOV_updtd/2)/Math.tan(VerticalFOV_updtd/2)
+            var fovmul1 = 0.9
+            var fovmul15 = 0.59
+            var fovmul2 = 0.49
+            var fovmul25 = 0.42
+            var fovmul3 = 0.35
+            var fovmul4 = 0.3
+            var fovmul5 = 0.22
+            var fovmul12 = 0.092
 
 
+            var fovadj1 = Math.tan(fovmul1 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj15 = Math.tan(fovmul15 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj2 = Math.tan(fovmul2 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj25 = Math.tan(fovmul25 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj3 = Math.tan(fovmul3 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj4 = Math.tan(fovmul4 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj5 = Math.tan(fovmul5 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
+            var fovadj12 = Math.tan(fovmul12 * VerticalFOV_updtd / 2) / Math.tan(VerticalFOV_updtd / 2)
 
-
-            var vx1 = parseInt(value * (adsmul1/fovadj1))
-            var vx15 = parseInt(value * (adsmul15/fovadj15))
-            var vx2 = parseInt(value * (adsmul2/fovadj2))
-            var vx25 = parseInt(value * (adsmul25/fovadj25))
-            var vx3 = parseInt(value * (adsmul3/fovadj3))
-            var vx4 = parseInt(value * (adsmul4/fovadj4))
-            var vx5 = parseInt(value * (adsmul5/fovadj5))
-            var vx12 = parseInt(value * (adsmul12/fovadj12))
+            //console.log(Math.tan(0.9 * (VerticalFOV_updtd / 2)))
+            var vx1 = parseInt(value * (adsmul1 / fovadj1))
+            var vx15 = parseInt(value * (adsmul15 / fovadj15))
+            var vx2 = parseInt(value * (adsmul2 / fovadj2))
+            var vx25 = parseInt(value * (adsmul25 / fovadj25))
+            var vx3 = parseInt(value * (adsmul3 / fovadj3))
+            var vx4 = parseInt(value * (adsmul4 / fovadj4))
+            var vx5 = parseInt(value * (adsmul5 / fovadj5))
+            var vx12 = parseInt(value * (adsmul12 / fovadj12))
 
             if (vx15 > 100) {
                 vx15 += "(100)"
